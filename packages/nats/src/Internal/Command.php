@@ -85,7 +85,9 @@ final class Command implements \Stringable
     public static function subscribe(string $subject, Sid $sid, ?string $group = null): self
     {
         return self::withCRLF(
-            null !== $group ? sprintf('SUB %s %s %s', $subject, $group, (string) $sid) : sprintf('SUB %s %s', $subject, (string) $sid),
+            null !== $group
+                ? sprintf('SUB %s %s %s', $subject, $group, (string) $sid)
+                : sprintf('SUB %s %s', $subject, (string) $sid),
         );
     }
 
@@ -117,28 +119,5 @@ final class Command implements \Stringable
     private static function withCRLF(string $cmd): self
     {
         return new self($cmd . self::CRLF);
-    }
-
-    /**
-     * @param array<non-empty-string, int|float|string|list<int|float|string>> $headers
-     */
-    private static function headersToString(array $headers): string
-    {
-        $normalizedHeaders = [];
-
-        foreach ($headers as $key => $value) {
-            if (false === is_array($value)) {
-                $value = [$value];
-            }
-
-            foreach ($value as $it) {
-                $normalizedHeaders[] = sprintf('%s: %s', $key, $it);
-            }
-        }
-
-        return sprintf(
-            "NATS/1.0\r\n%s\r\n\r\n",
-            implode(self::CRLF, $normalizedHeaders),
-        );
     }
 }

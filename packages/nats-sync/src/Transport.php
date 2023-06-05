@@ -78,7 +78,12 @@ final class Transport implements
         try {
             if (null !== $options->length) {
                 /** @var non-empty-string */
-                return implode('', iterator_to_array(self::doRecv($this->stream, $options->length, $options->chunkSize ?: $options->length)));
+                return implode(
+                    '',
+                    iterator_to_array(
+                        self::doRecv($this->stream, $options->length, $options->chunkSize ?: $options->length),
+                    ),
+                );
             }
 
             /** @var false|non-empty-string $line */

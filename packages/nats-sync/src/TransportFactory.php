@@ -21,7 +21,9 @@ final class TransportFactory implements TransportFactoryInterface
                 return false;
             }
 
-            throw new ConnectionFailed(sprintf('The connection could not be established due to an error "%s".', $error));
+            throw new ConnectionFailed(
+                sprintf('The connection could not be established due to an error "%s".', $error),
+            );
         });
 
         try {
@@ -34,7 +36,9 @@ final class TransportFactory implements TransportFactoryInterface
             );
 
             if (false === $stream) {
-                throw new ConnectionFailed(sprintf('The connection could not be established due to an error "%s".', $errorMessage));
+                throw new ConnectionFailed(
+                    sprintf('The connection could not be established due to an error "%s".', $errorMessage),
+                );
             }
 
             stream_set_timeout($stream, (int) ($options->timeout / 1_000), $options->timeout * 1_000);

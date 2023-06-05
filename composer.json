@@ -61,8 +61,12 @@
         "phpunit": "./vendor/bin/phpunit --testdox --do-not-cache",
         "psalm": "./vendor/bin/psalm --no-cache",
         "phpcs": "./vendor/bin/phpcs --standard=phpcs.xml",
-        "phpcbf": "./vendor/bin/phpcbf -p --standard=PSR12 packages",
-        "test": ["@phpunit", "@psalm", "@phpcs"]
+        "phpcbf": "./vendor/bin/phpcbf -p --standard=phpcs.xml packages",
+        "test": [
+            "@phpunit",
+            "@psalm",
+            "@phpcs"
+        ]
     },
     "replace": {
         "nats-php/nats": "self.version",
