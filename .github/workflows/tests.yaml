@@ -48,4 +48,4 @@ jobs:
         run: composer validate
 
       - name: Execute tests
-        run: vendor/bin/phpunit --testdox --verbose
+        run: vendor/bin/phpunit --testdox
