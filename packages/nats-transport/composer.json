@@ -1,0 +1,28 @@
+{
+    "name": "nats-php/nats-transport",
+    "description": "Nats transport contracts.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "queue",
+        "nats"
+    ],
+    "autoload": {
+        "psr-4": {
+            "NatsPhp\\Nats\\Transport\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "v.zanfir",
+            "email": "vadimzanfir@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "vimeo/psalm": "^5.12"
+    }
+}
